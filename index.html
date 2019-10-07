@@ -4,13 +4,88 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
   <title>Big</title>
+  <link href="themes/light.css" rel="stylesheet" type="text/css" />
   <link href="big.css" rel="stylesheet" type="text/css" />
   <script src="big.js"></script>
 </head>
-<body class="light">
+<body class="light" style="overflow: hidden">
   <div>
-    Your presentation goes here
-    <notes>Speakers notes go here.</notes>
+    <p>무한 DOM 렌더링</p>
+    <p>성능 개선기</p>
+    <br/>
+    <p>FE플랫폼 김민규</p>
+    <notes>안녕하세요, 무한 DOM 렌더링 성능 개선기에 대해 발표할 FE플랫폼 김민규입니다.</notes>
+  </div>
+  <div>
+    <img src="assets/logo.svg"><br/>
+    <p>성능 개선기</p>
+    <notes>Flicking이란 라이브러리의 성능 개선기입니다.</notes>
+  </div>
+  <div>
+    <p>Flicking?</p>
+    <notes>잠깐 Flicking이라는 라이브러리에 대해 설명 드리자면</notes>
+  </div>
+  <div>
+    <p>Carousel UI</p>
+    <p>라이브러리</p>
+    <notes>네이버의 대표적인 캐로셀 UI 라이브러리입니다.</notes>
+  </div>
+  <div>
+    <img src="assets/carousel.gif" style="width: auto; height: 80vh;" />
+    <notes>캐로셀, 혹은 슬라이더라고 불리는 UI는 그림과 같이 여러 개의 패널을 사용자의 동작에 따라 넘겨볼 수 있는 형태의 UI를 말합니다.</notes>
+  </div>
+  <div>
+    <div style="max-height: 900px">
+      <table>
+        <tbody>
+          <tr>
+            <td><img width="220" src="assets/1.gif" alt="iPhone demo" style="max-width:100%;"></td>
+            <td><img width="220" src="assets/2.gif" alt="Music app demo" style="max-width:100%;"></td>
+            <td rowspan="2"><img width="440" src="assets/4.gif" alt="Full page demo" style="max-width:100%;"></td>
+          </tr>
+          <tr>
+            <td colspan="2"><img width="440" src="assets/3.gif" alt="Parallax demo" style="max-width:100%;"></td>
+          </tr>
+          <tr>
+            <td colspan="3"><img width="880" src="assets/5.gif" alt="Cabinet demo" style="max-width:100%;"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <notes></notes>
+  </div>
+  <div>
+    <p>오픈소스입니다!</p>
+  </div>
+  <div>
+    <a href="https://github.com/naver/egjs-flicking">https://github.com/naver/egjs-flicking</a>
+    <notes></notes>
+  </div>
+  <div>
+    <p>본론으로</p>
+    <p>들어가기 전에..</p>
+    <notes>본론으로 들어가기 전에 먼저, 발표주제가 성능강화에 관해서이므로 </notes>
+  </div>
+  <div>
+    <p>성능개선</p>
+  </div>
+  <div>
+    <p style="display: flex; justify-content: center;">
+      <img src="assets/see.gif" />
+    </p>
+    <h6>직접 <a href="https://naver.github.io/egjs-flicking/features/infiniteflicking.html" target="_blank" style="text-decoration: none">확인</a>해봅시다</h6>
+    <notes></notes>
+    <notes>데모 세션 진행/Infinite가 뭔지 설명</notes>
+  </div>
+  <div>
+    <p>돌아와서..</p>
+  </div>
+  <div>
+    <h4>분석 & 개선</h4>
+    <notes>다시 발표로 돌아와서, </notes>
+  </div>
+  <div>
+    
   </div>
 </body>
 </html>
