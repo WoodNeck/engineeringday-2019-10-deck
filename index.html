@@ -8,13 +8,16 @@
   <link href="big.css" rel="stylesheet" type="text/css" />
   <script src="big.js"></script>
 </head>
-<body class="light" style="overflow: hidden">
+<body class="light">
   <div>
     <p>무한 DOM 렌더링</p>
     <p>성능 개선기</p>
     <br/>
     <p>FE플랫폼 김민규</p>
     <notes>안녕하세요, 무한 DOM 렌더링 성능 개선기에 대해 발표할 FE플랫폼 김민규입니다.</notes>
+  </div>
+  <div>
+    <p class="emphasis">오늘은</p>
   </div>
   <div>
     <img src="assets/logo.svg"><br/>
@@ -69,23 +72,134 @@
   <div>
     <p>성능개선</p>
   </div>
-  <div>
-    <p style="display: flex; justify-content: center;">
-      <img src="assets/see.gif" />
+  <div style="width: 60%;">
+    <p style="width: 100%; display: flex; justify-content: center;">
+      <img src="https://media1.tenor.com/images/54cca05227b04d73186ecdfb6490e64c/tenor.gif?itemid=11154687" />
     </p>
-    <h6>직접 <a href="https://naver.github.io/egjs-flicking/features/infiniteflicking.html" target="_blank" style="text-decoration: none">확인</a>해봅시다</h6>
+    <center><h6>직접 <a href="https://naver.github.io/egjs-flicking/features/infiniteflicking.html" target="_blank" style="text-decoration: none">확인</a>해봅시다</h6></center>
     <notes></notes>
     <notes>데모 세션 진행/Infinite가 뭔지 설명</notes>
   </div>
   <div>
     <p>돌아와서..</p>
-  </div>
-  <div>
-    <h4>분석 & 개선</h4>
     <notes>다시 발표로 돌아와서, </notes>
   </div>
   <div>
-    
+    <p>경험기</p>
+  </div>
+  <div>
+    <ul>
+      <li>어떻게 진행했는지..</li>
+      <li>어떻게 해결했는지..</li>
+    </ul>
+  </div>
+  <div>
+    시작은..
+  </div>
+  <div style="width: 60%">
+    <img src="assets/begin.png" />
+  </div>
+  <div style="width: 60%">
+    <img src="assets/begin2.png" />
+    <notes>제 경우 이미 성능 문제가 심각할거라는 것을 알고 있었어요</notes>
+  </div>
+  <div>
+    <h6>성능 문제가 있긴 한데...</h6>
+    <h6>어떻게 해결해야 하지?</h6>
+    <notes>그래서 성능 문제가 이미 있는 경우와는 다를거라고 생각합니다.</notes>
+    <notes>그 경우에 대한 얘기는 좀 이따 하도록 할게요</notes>
+  </div>
+  <div>
+    <h4>분석 파트에서<br/>다시 보겠습니다.</h4>
+  </div>
+  <div>
+    <p>DOM 증가? 성능 하락?</p>
+    <notes>대신에 우선 앞서 이야기했던 부분을 좀 이어서 해볼게요</notes>
+    <notes>아까, DOM이 계속 증가하는 것이 성능 문제를 야기할 것이라고 얘기를 했습니다.</notes>
+  </div>
+  <div>
+    <h4>"태생부터 느린 DOM"</h4>
+    <h6>- 자바스크립트 성능 최적화</h6>
+  </div>
+  <div>
+    <h4>DOM 조작: 🐌</h4>
+    <notes>실질적으로는 DOM 자체가 느린건 아니구요, DOM 조작이 느린겁니다.</notes>
+  </div>
+  <div>
+    <p>
+      element.innerHTML = "안뇽하세용";
+    </p>
+  </div>
+  <div>
+    <table style="table-layout: fixed; width: 100%;">
+      <tr>
+        <td style="width: 33%;">JS</td>
+        <td style="width: 33%;"></td>
+        <td style="width: 33%;">DOM</td>
+      </tr>
+    </table>
+  </div>
+  <div>
+    <table style="table-layout: fixed; width: 100%;">
+      <tr>
+        <td style="width: 33%;">JS</td>
+        <td style="width: 33%; position: relative;">
+          =>
+        </td>
+        <td style="width: 33%;">DOM</td>
+      </tr>
+    </table>
+  </div>
+  <div>
+    DOM
+    <ul>
+      <li>HTML parsing</li>
+      <li>기존 child 제거</li>
+      <li>child 엘리먼트 생성</li>
+      <li>엘리먼트 크기 재계산</li>
+      <li>...</li>
+    </ul>
+  </div>
+  <div>
+    <p>DOM 조작 ↑</p>
+    <p>속도 ↓</p>
+  </div>
+  <div>
+    <p>Flicking은 두 가지 옵션을 생각했다</p>
+  </div>
+  <div>
+    16ms!
+  </div>
+  <div>
+    <h4>분석 & 개선</h4>
+  </div>
+  <div style="width: 60%">
+    <img style="width: 100%" src="https://ds055uzetaobb.cloudfront.net/brioche/uploads/B5gOI4grPw-request-5.svg" />
+    <p>병목을 찾습니다</p>
+  </div>
+  <div>
+    <p>어떻게?</p>
+  </div>
+  <div style="width: 60%">
+    <img style="width: 100%;" src="https://css-tricks.com/wp-content/uploads/2018/02/chrome-devtools.jpg" />
+    <p>저희의 무기</p>
+  </div>
+  <div>
+    <p>맥: Cmd + Option + i</p>
+    <h4>윈도우: Ctrl + Shift + i</h4>
+    <p>혹은 F12</p>
+  </div>
+  <div>
+    <p>대충 Layout과 Recalculate Style이 반복되는 경우를 찾으라는 얘기</p>
+  </div>
+  <div>
+    <p>Reflow를 일으킬 수 있는 경우</p>
+  </div>
+  <div>
+    <p>실습!!! big.js이용</p>
+  </div>
+  <div>
+    <p>미리 canvas를 통해 font size 계산하는 파일 가져와서 그것으로 교체</p>
   </div>
 </body>
 </html>
