@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Sunflower:300&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Black+Han+Sans&display=swap');
 
 * {
   font-family: 'Sunflower', sans-serif;
@@ -13,13 +12,9 @@ em {
 }
 a {
   color: #0889d1;
+  text-decoration: none;
   text-decoration-skip: ink;
 }
 a:hover {
   color: hotpink;
-}
-.emphasis {
-  font-family: 'Black Han Sans', sans-serif;
-  font-weight: 100;
-  color: #365280;
 }

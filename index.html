@@ -17,7 +17,8 @@
     <notes>안녕하세요, 무한 DOM 렌더링 성능 개선기에 대해 발표할 FE플랫폼 김민규입니다.</notes>
   </div>
   <div>
-    <p class="emphasis">오늘은</p>
+    <p>오늘은</p>
+    <notes>제가 오늘 발표할 주제는</notes>
   </div>
   <div>
     <img src="assets/logo.svg"><br/>
@@ -26,12 +27,12 @@
   </div>
   <div>
     <p>Flicking?</p>
-    <notes>잠깐 Flicking이라는 라이브러리에 대해 설명 드리자면</notes>
+    <notes>발표를 시작하기에 앞서, 잠깐 Flicking이라는 라이브러리에 대해 설명 드리자면</notes>
   </div>
   <div>
     <p>Carousel UI</p>
     <p>라이브러리</p>
-    <notes>네이버의 대표적인 캐로셀 UI 라이브러리입니다.</notes>
+    <notes>Flicking은 네이버의 대표적인 캐로셀 UI 라이브러리입니다.</notes>
   </div>
   <div>
     <img src="assets/carousel.gif" style="width: auto; height: 80vh;" />
@@ -55,22 +56,24 @@
         </tbody>
       </table>
     </div>
-    <notes></notes>
+    <notes>Flicking을 사용하시면 보이는 것처럼 다양한 UI형태를 쉽게 제작하실 수 있습니다.</notes>
   </div>
   <div>
     <p>오픈소스입니다!</p>
+    <notes>Flicking은 오픈소스 라이브러리이고</notes>
   </div>
   <div>
     <a href="https://github.com/naver/egjs-flicking">https://github.com/naver/egjs-flicking</a>
-    <notes></notes>
+    <notes>Github에 소스코드가 공개되어있으므로, 원하시면 나중에 확인해보세요</notes>
   </div>
   <div>
     <p>본론으로</p>
     <p>들어가기 전에..</p>
-    <notes>본론으로 들어가기 전에 먼저, 발표주제가 성능강화에 관해서이므로 </notes>
+    <notes>본론으로 들어가기 전에 먼저</notes>
   </div>
   <div>
     <p>성능개선</p>
+    <notes>발표주제가 성능강화에 관해서이므로 </notes>
   </div>
   <div style="width: 60%;">
     <p style="width: 100%; display: flex; justify-content: center;">
@@ -102,15 +105,6 @@
   <div style="width: 60%">
     <img src="assets/begin2.png" />
     <notes>제 경우 이미 성능 문제가 심각할거라는 것을 알고 있었어요</notes>
-  </div>
-  <div>
-    <h6>성능 문제가 있긴 한데...</h6>
-    <h6>어떻게 해결해야 하지?</h6>
-    <notes>그래서 성능 문제가 이미 있는 경우와는 다를거라고 생각합니다.</notes>
-    <notes>그 경우에 대한 얘기는 좀 이따 하도록 할게요</notes>
-  </div>
-  <div>
-    <h4>분석 파트에서<br/>다시 보겠습니다.</h4>
   </div>
   <div>
     <p>DOM 증가? 성능 하락?</p>
@@ -145,6 +139,7 @@
         <td style="width: 33%;">JS</td>
         <td style="width: 33%; position: relative;">
           =>
+          <span style="position: absolute; left: -30%; bottom: 100%; font-size: 40px;">element의 내용물을 좀 바꿔주렴..</span>
         </td>
         <td style="width: 33%;">DOM</td>
       </tr>
@@ -165,35 +160,228 @@
     <p>속도 ↓</p>
   </div>
   <div>
-    <p>Flicking은 두 가지 옵션을 생각했다</p>
+    <p>주로 느린 것들:</p>
+    <p>- 렌더링</p>
+    <p>- 크기 재계산</p>
+    <notes>그 중에서도 특히나 느린 것이, 렌더링과 엘리먼트 크기 재계산과 관련된 조작인데</notes>
+  </div>
+  <div style="width: 60%">
+    <img style="width: 100%;" src="assets/dom_increase.gif" />
+    <notes>플리킹은 여기 보이는것처럼, 기존에 무조건 패널의 개수만큼 엘리먼트를 증가시키는 방식을 사용했었습니다.</notes>
+    <notes>그래서, 성능에 문제가 있을 것임이 확실하게 보이는 상황이었죠.</notes>
   </div>
   <div>
-    16ms!
+    <p>주로 느린 것들:</p>
+    <p style="color: rgb(211, 71, 16)">- 렌더링</p>
+    <p>- 크기 재계산</p>
+    <notes>먼저, Flicking에서 처음으로 시도했던 렌더링 비용을 낮추는 방법에 대해 알아봅시다</notes>
+  </div>
+  <div>
+    <h4>두 가지 옵션</h4>
+  </div>
+  <div>
+    <ul>
+      <li>엘리먼트 삭제</li>
+      <li>display: none;</li>
+    </ul>
+  </div>
+  <div>
+    <h6>구현한 뒤 테스트하긴 좀..</h6>
+  </div>
+  <div>
+    <h6>가장 단순한 형태로 테스트</h6>
+  </div>
+  <div>
+    <p>setTimeout</p>
+  </div>
+  <div style="width: 100%; display: flex; align-items: center; flex-direction: column;">
+    <img style="width: 70%;" src="assets/r1-1.png" />
+    <p>기존</p>
+  </div>
+  <div style="width: 100%; display: flex; align-items: center; flex-direction: column;">
+    <img style="width: 70%;" src="assets/r1-2.png" />
+    <p>display: none;</p>
+  </div>
+  <div style="width: 100%; display: flex; align-items: center; flex-direction: column;">
+    <img style="width: 70%;" src="assets/r1-3.png" />
+    <p>엘리먼트 삭제</p>
+  </div>
+  <div>
+    <img src="assets/perf.png" />
+  </div>
+  <div>
+    <img src="assets/perf2.png" />
+    <p><center>최대 5개</center></p>
+  </div>
+  <div>
+    <img src="assets/r2.png" />
+  </div>
+  <div>
+    <h4>엘리먼트 삭제!</h4>
+  </div>
+  <div>
+    <h4>실제 구현해보니..</h4>
+  </div>
+  <div style="display: flex; justify-content: center; align-items: center;">
+    <img src="assets/r3-1.png" />
+    <h6>구현 전</h6>
+  </div>
+  <div style="display: flex; justify-content: center; align-items: center;">
+    <img src="assets/r3-2.png" />
+    <h6>구현 후</h6>
+  </div>
+  <div>
+    <p>33.31ms => 19.49ms (-41.49%)</p>
+  </div>
+  <div>
+    <h4>대략 1.6배</h4>
+    <notes>1.6배 상승했습니다. 하지만 제가 발표 제목으로 건 20배 성능 향상에 비해서는 아직 택없이 모자라죠</notes>
+  </div>
+  <div>
+    <h4>좀 더 세부적으로..</h4>
+    <notes>그래서 여기서 좀 더 세부적인 최적화를 수행했었습니다.</notes>
   </div>
   <div>
     <h4>분석 & 개선</h4>
+    <notes>일단 기본적으로 방식은 분석 이후 이를 개선하는 것입니다.</notes>
   </div>
   <div style="width: 60%">
     <img style="width: 100%" src="https://ds055uzetaobb.cloudfront.net/brioche/uploads/B5gOI4grPw-request-5.svg" />
     <p>병목을 찾습니다</p>
+    <notes>제일 중요한 것은, 성능 문제를 일으키는 가장 큰 병목을 찾는 것인데.</notes>
   </div>
   <div>
     <p>어떻게?</p>
+    <notes>가장 쉬운 방법이</notes>
   </div>
   <div style="width: 60%">
     <img style="width: 100%;" src="https://css-tricks.com/wp-content/uploads/2018/02/chrome-devtools.jpg" />
     <p>저희의 무기</p>
+    <notes>Chrome의 Devtool을 이용하는 것입니다.</notes>
+  </div>
+  <!-- <div style="width: 80%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <img style="width: 100%; margin: 1.2em" src="assets/r4.png" />
+    <h5 style="margin: 0.6em">제일 긴 것 탐색</h6>
+    <h6 style="margin: 0.6em">Layout (21ms of 27ms)</h6>
+  </div>
+  <div style="width: 80%; text-align: center;">
+    <img style="width: 100%;" src="assets/c1.png" />
+    <h6>getBbox가 매번 호출될 필요는 없네?</h6>
+  </div>
+  <div style="width: 100%; text-align: center;">
+    <img style="width: 100%; margin: 1.2em 0 0.6em 0" src="assets/c2.png" />
+    <h6>필요할때만 업데이트 하도록</h6>
   </div>
   <div>
-    <p>맥: Cmd + Option + i</p>
-    <h4>윈도우: Ctrl + Shift + i</h4>
-    <p>혹은 F12</p>
+    <img style="width: 100%;" src="assets/r5.png" />
+    <h6>21ms => 17.45ms</h6>
+  </div> -->
+  <div>
+    <h6>퍼포먼스 탭에서<br/>제일 긴(오래 걸리는) 것 탐색</h6>
+    <notes>기본적으로는, 퍼포먼스 탭에 나타나는 하나의 블락에서, 시간이 가장 오래 걸리는 스크립트를 찾아 이를 개선하면 되는데요, 예를 들어 보이겠습니다.</notes>
+  </div>
+  <div>1</div>
+  <div>
+    <h6>불필요한 스타일 쓰기 제거</h6>
   </div>
   <div>
-    <p>대충 Layout과 Recalculate Style이 반복되는 경우를 찾으라는 얘기</p>
+    <img src="https://miro.medium.com/max/5232/1*fcsawWijDLdIZ26V8r5kuA.png" />
+    <notes>플리킹 개선 전에 찍은 퍼포먼스 탭의 모습인데요, 유달리 긴 함수가 하나 보입니다.</notes>
+    <notes>거기에 특히나 아래쪽을 보시면 setPosition이 이 함수의 대부분의 시간을 차지하고 있는 것으로 보입니다.</notes>
+  </div>
+  <div style="width: 100%;">
+    <img style="width: 100%;" src="assets/c3.png" />
+  </div>
+  <div style="width: 100%;">
+    <img style="width: 100%;" src="assets/c4.png" />
+  </div>
+  <div style="text-align: center;">
+    <h4>style의 left/top 업데이트<br/>=> Layout 발생</h4>
+    <img src="assets/layout.png" />
   </div>
   <div>
-    <p>Reflow를 일으킬 수 있는 경우</p>
+    <a href="https://docs.google.com/spreadsheets/d/1Hvi0nu2wG3oQ51XRHtMv-A_ZlidnwUYwgQsPQUg1R2s/pub?single=true&gid=0&output=html"><h6>레이아웃 발생 CSS 속성들</h6></a>
+  </div>
+  <div>
+    <p>해결하기 위해<br/>이런 것들을 적용했습니다</p>
+    <ul>
+      <li>값 동일시 CSS 업데이트 X</li>
+      <li>엘리먼트 안보일시 업데이트 X</li>
+    </ul>
+  </div>
+  <div style="width: 80%; text-align: center;">
+    <img style="width: 100%; margin: 1.2em 0 1.2em 0" src="https://miro.medium.com/max/5292/1*1JsaLOrnPVKSF0-mMWQGcQ.png" />
+    <h4>18.54ms => 1.8ms (-90.29%)</h4>
+  </div>
+  <div>
+    <h6>한 샘플 => 오류 가능성</h6>
+  </div>
+  <div style="width: 100%; text-align: center;">
+    <img style="width: 40%; margin: 1.2em 0 1.2em 0" src="https://miro.medium.com/max/856/1*9wpuNbmmT-QiE8dcphGW_g.png" />
+    <img style="width: 40%; margin: 1.2em 0 1.2em 0" src="https://miro.medium.com/max/888/1*YR7YYjVOdi8zwrCuebi0Sw.png" />
+    <h6>평균 수행시간 비교<br/>16.69ms => 1.76ms (-89.45%)</h6>
+  </div>
+  <div>
+    2
+  </div>
+  <div>
+    <h6>스타일 읽기/쓰기 배칭(batching)</h6>
+  </div>
+  <div style="width: 100%;">
+    <img style="width: 100%;" src="https://miro.medium.com/max/4968/1*_z5Xy-N1Sc1pTiypvVvqyw.png" />
+  </div>
+  <div>
+    <h6>무수한 보라색 조각들<br/>=> 배칭이 필요하다는 신호</h6>
+  </div>
+  <div style="width: 80%;">
+    <img style="width: 100%;" src="assets/c5.png" />
+  </div>
+  <div style="width: 80%;">
+    <img style="width: 100%;" src="assets/c6.png" />
+  </div>
+  <div>
+    <p>Flicking의 경우</p>
+    <h5>"appendChild"와 "getBoundingClientRect"를 반복</h5>
+  </div>
+  <div style="width: 80%;">
+    <img style="width: 100%;" src="assets/c7.png" />
+  </div>
+  <div style="width: 80%; text-align: center;">
+    <img style="width: 100%;" src="https://miro.medium.com/max/2080/1*_QmqOK8QelvOIElnGCfD5A.png" />
+    <h6>2725.5ms => 229.5ms (-91.6%)</h6>
+  </div>
+  <div>
+    <h6>저렇게 극단적이지 않아도<br/>적용 가능합니다</h6>
+  </div>
+  <div>
+    <h6>패널 추가시에 적용</h6>
+  </div>
+  <div style="width: 80%; text-align: center;">
+    <img style="width: 100%;" src="https://miro.medium.com/max/4044/1*pyOakCurovYPpEH0rOv0ZQ.png" />
+    <h6>개선 전</h6>
+    <img style="width: 100%;" src="https://miro.medium.com/max/4408/1*G1lQEqr5TyAmARs8oO8Xig.png" />
+    <h6>개선 후</h6>
+  </div>
+  <div style="width: 80%; text-align: center;">
+    <h4>패널 3000개 추가시<br/>평균 소모 시간</h4>
+    <h6>5894.69ms => 154.52ms (-97.38%)</h6>
+  </div>
+  <div>
+    3
+  </div>
+  <div>
+    <h6>레이어 크기 유지</h6>
+  </div>
+  <div>
+    <h6>크롬 Devtools에는<br/>Layers탭이 있습니다</h6>
+  </div>
+  <div style="width: 80%; text-align: center;">
+    <img style="width: 100%; margin: 1.2em 0 1.2em 0" src="https://miro.medium.com/max/1040/1*auuCLR-cYfoFDZUroTTsiA.gif" />
+    <h6>레이어↑ => 메모리↑</h6>
+  </div>
+  <div>
+    <h5>성능을 올리진 못했습니다</h5>
+    <h6>대신,<br/>메모리 사용량 유지를 통한 크래시 방지</h6>
   </div>
   <div>
     <p>실습!!! big.js이용</p>
