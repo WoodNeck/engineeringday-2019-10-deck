@@ -206,10 +206,10 @@
     <img style="width: 70%;" src="assets/r1-3.png" />
     <p>엘리먼트 삭제</p>
   </div>
-  <div>
+  <div style="width: 100%; display: flex; align-items: center; flex-direction: column;">
     <img src="assets/perf.png" />
   </div>
-  <div>
+  <div style="width: 100%; display: flex; align-items: center; flex-direction: column;">
     <img src="assets/perf2.png" />
     <p><center>최대 5개</center></p>
   </div>
@@ -309,6 +309,12 @@
       <li>엘리먼트 안보일시 업데이트 X</li>
     </ul>
   </div>
+  <div style="width: 100%;">
+    <img style="width: 100%;" src="assets/c8.png" />
+  </div>
+  <div style="width: 100%;">
+    <img style="width: 100%;" src="assets/c9.png" />
+  </div>
   <div style="width: 80%; text-align: center;">
     <img style="width: 100%; margin: 1.2em 0 1.2em 0" src="https://miro.medium.com/max/5292/1*1JsaLOrnPVKSF0-mMWQGcQ.png" />
     <h4>18.54ms => 1.8ms (-90.29%)</h4>
@@ -329,9 +335,13 @@
   </div>
   <div style="width: 100%;">
     <img style="width: 100%;" src="https://miro.medium.com/max/4968/1*_z5Xy-N1Sc1pTiypvVvqyw.png" />
+    <notes>제가 배칭이 필요한 가장 대표적인 경우라고 생각하는 사진입니다.</notes>
   </div>
   <div>
     <h6>무수한 보라색 조각들<br/>=> 배칭이 필요하다는 신호</h6>
+  </div>
+  <div>
+    <p>어떻게?</p>
   </div>
   <div style="width: 80%;">
     <img style="width: 100%;" src="assets/c5.png" />
@@ -382,6 +392,75 @@
   <div>
     <h5>성능을 올리진 못했습니다</h5>
     <h6>대신,<br/>메모리 사용량 유지를 통한 크래시 방지</h6>
+  </div>
+  <div>
+    <p>종합하면</p>
+  </div>
+  <div style="width: 80%; text-align: center;">
+    <img style="width: 80%; margin: 0.6em 0 0.6em 0" src="https://miro.medium.com/max/830/1*WGsjrEMTTg3PEzgBLzq-ug.png" />
+    <h6>개선 전(위) / 개선 후(아래)</h6>
+  </div>
+  <div style="width: 80%; text-align: center;">
+    <img style="width: 80%; margin: 0.6em 0 0.6em 0" src="https://miro.medium.com/max/1432/1*v5DN2Nbz9eEUZaFdmoxWoA.png" />
+    <img style="width: 80%; margin: 0.6em 0 0.6em 0" src="https://miro.medium.com/max/2440/1*5AVulDd890F-wwYMg50otw.png" />
+  </div>
+  <div style="width: 100%; text-align: center;">
+    <img style="width: 40%; margin: 1.2em 0 1.2em 0" src="https://miro.medium.com/max/908/1*g3r-OOJbENP8K1sB1EOdBQ.png" />
+    <img style="width: 40%; margin: 1.2em 0 1.2em 0" src="https://miro.medium.com/max/856/1*R9f8yOrWq-LYcnX_UBygYA.png" />
+    <h6>평균 수행시간: 198.15ms => 8.60ms (-95.66%)</h6>
+    <h6>최대 수행시간: 396.09ms => 17.82ms (-95.50%)</h6>
+  </div>
+  <div>
+    <h6>실행시간 1/20</h6>
+  </div>
+  <div>
+    <h6>모든 케이스에 대해서는<br/>20배 성능 향상</h6>
+  </div>
+  <div>
+    <h6>좀 더 일반적인 경우를 본다면<br/>성능을 더 높일 수 있습니다!</h6>
+  </div>
+  <div>
+    <h4>일반적으로는..</h4>
+  </div>
+  <div>
+    <h4>패널의 크기를<br/>전부<br/>계산할 필요가 없습니다</h4>
+  </div>
+  <div style="width: 80%;">
+    <img style="width: 100%;" src="assets/6.gif" />
+  </div>
+  <div>
+    <h4>isEqualSize</h4>
+  </div>
+  <div>
+    <h4>하나만 계산하고<br/>나머지는 계산된 값을 사용</h4>
+  </div>
+  <div>
+    <h4>창 크기가 변해도<br/>패널의 크기는<br/>변하지 않습니다</h4>
+  </div>
+  <div style="width: 80%;">
+    <img style="width: 100%;" src="assets/constant.png" />
+    <h4><center>너비/높이가 고정 크기</center></h4>
+  </div>
+  <div>
+    <h4>isConstantSize</h4>
+  </div>
+  <div>
+    <h6>크기 재계산을 건너뜁니다</h6>
+  </div>
+  <div>
+    <p>효과</p>
+  </div>
+  <div style="width: 80%; text-align: center;">
+    <img style="width: 100%; margin: 1.2em 0 1.2em 0" src="https://miro.medium.com/max/2900/1*_5Cbtk8Aog-AW3JnOVVrUA.png" />
+    <h6>옵션 미적용시(268.41ms)</h6>
+  </div>
+  <div style="width: 80%; text-align: center;">
+    <img style="width: 100%; margin: 1.2em 0 1.2em 0" src="https://miro.medium.com/max/1932/1*uCbEgEBii86RsJPvJ6Uqsw.png" />
+    <h6>isEqualSize 적용시(44.17ms)</h6>
+  </div>
+  <div style="width: 80%; text-align: center;">
+    <img style="width: 80%;" src="https://miro.medium.com/max/1208/1*KRE0GNHRDwB1yj27uH6vKg.png" />
+    <h6>isConstantSize 적용시(36.68ms)</h6>
   </div>
   <div>
     <p>실습!!! big.js이용</p>
