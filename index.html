@@ -238,8 +238,13 @@
     <notes>1.6배 상승했습니다. 하지만 제가 발표 제목으로 건 20배 성능 향상에 비해서는 아직 택없이 모자라죠</notes>
   </div>
   <div>
-    <h4>좀 더 세부적으로..</h4>
-    <notes>그래서 여기서 좀 더 세부적인 최적화를 수행했었습니다.</notes>
+    <h4>좀 더 세부적으로..<br/>벤치마크를 확인!</h4>
+  </div>
+  <div>
+    <a href="https://jsperf.com/element-remove-vs-display-none/1" target="_blank"><h6>https://jsperf.com/element-remove-vs-display-none/1</h6></a>
+  </div>
+  <div>
+    <a href="https://jsperf.com/element-remove-vs-display-none-2" target="_blank"><h6>https://jsperf.com/element-remove-vs-display-none-2</h6></a>
   </div>
   <div>
     <h4>분석 & 개선</h4>
@@ -280,6 +285,12 @@
     <h6>퍼포먼스 탭에서<br/>제일 긴(오래 걸리는) 것 탐색</h6>
     <notes>기본적으로는, 퍼포먼스 탭에 나타나는 하나의 블락에서, 시간이 가장 오래 걸리는 스크립트를 찾아 이를 개선하면 되는데요, 예를 들어 보이겠습니다.</notes>
   </div>
+  <div style="width: 100%; text-align: center;">
+    <img style="width: 50%;" src="assets/points.png" />
+  </div>
+  <div style="width: 100%; text-align: center;">
+    <img style="width: 50%;" src="assets/points2.png" />
+  </div>
   <div>1</div>
   <div>
     <h6>불필요한 스타일 쓰기 제거</h6>
@@ -300,7 +311,9 @@
     <img src="assets/layout.png" />
   </div>
   <div>
-    <a href="https://docs.google.com/spreadsheets/d/1Hvi0nu2wG3oQ51XRHtMv-A_ZlidnwUYwgQsPQUg1R2s/pub?single=true&gid=0&output=html"><h6>레이아웃 발생 CSS 속성들</h6></a>
+    <a href="https://docs.google.com/spreadsheets/d/1Hvi0nu2wG3oQ51XRHtMv-A_ZlidnwUYwgQsPQUg1R2s/pub?single=true&gid=0&output=html" target="_blank">
+      <h6>레이아웃 발생 CSS 속성들</h6>
+    </a>
   </div>
   <div>
     <p>해결하기 위해<br/>이런 것들을 적용했습니다</p>
@@ -363,8 +376,12 @@
   <div>
     <h6>저렇게 극단적이지 않아도<br/>적용 가능합니다</h6>
   </div>
-  <div>
-    <h6>패널 추가시에 적용</h6>
+  <div style="text-align: center;">
+    <h4 style="margin: 1.8em 0 1.8em 0;">패널 추가시에 적용</h6>
+    <ul style="margin: 1.8em 0 1.8em 0;">
+      <li>6x slowdown</li>
+      <li>2000개에서 3개 추가</li>
+    </ul>
   </div>
   <div style="width: 80%; text-align: center;">
     <img style="width: 100%;" src="https://miro.medium.com/max/4044/1*pyOakCurovYPpEH0rOv0ZQ.png" />
@@ -398,7 +415,7 @@
   </div>
   <div style="width: 80%; text-align: center;">
     <img style="width: 80%; margin: 0.6em 0 0.6em 0" src="https://miro.medium.com/max/830/1*WGsjrEMTTg3PEzgBLzq-ug.png" />
-    <h6>개선 전(위) / 개선 후(아래)</h6>
+    <h6>개선 전(위) / 개선 후(아래)<br/>6x slowdown, 3000개에서 4002개까지 추가</h6>
   </div>
   <div style="width: 80%; text-align: center;">
     <img style="width: 80%; margin: 0.6em 0 0.6em 0" src="https://miro.medium.com/max/1432/1*v5DN2Nbz9eEUZaFdmoxWoA.png" />
@@ -415,6 +432,9 @@
   </div>
   <div>
     <h6>모든 케이스에 대해서는<br/>20배 성능 향상</h6>
+  </div>
+  <div style="width: 100%;">
+    <img style="width: 100%;" src="https://miro.medium.com/max/2080/1*_QmqOK8QelvOIElnGCfD5A.png" />
   </div>
   <div>
     <h6>좀 더 일반적인 경우를 본다면<br/>성능을 더 높일 수 있습니다!</h6>
@@ -447,26 +467,21 @@
   <div>
     <h6>크기 재계산을 건너뜁니다</h6>
   </div>
-  <div>
-    <p>효과</p>
+  <div style="text-align: center;">
+    <h1 style="margin: 0;">효과</h1>
+    <h6 style="margin: 1.2em 0 1.2em;">(6x slowdown, 3000개에서 resize)</h6>
   </div>
   <div style="width: 80%; text-align: center;">
     <img style="width: 100%; margin: 1.2em 0 1.2em 0" src="https://miro.medium.com/max/2900/1*_5Cbtk8Aog-AW3JnOVVrUA.png" />
-    <h6>옵션 미적용시(268.41ms)</h6>
+    <h6>옵션 미적용시: 268.41ms</h6>
   </div>
   <div style="width: 80%; text-align: center;">
     <img style="width: 100%; margin: 1.2em 0 1.2em 0" src="https://miro.medium.com/max/1932/1*uCbEgEBii86RsJPvJ6Uqsw.png" />
-    <h6>isEqualSize 적용시(44.17ms)</h6>
+    <h6>isEqualSize 적용시: 44.17ms (-83.54%)</h6>
   </div>
   <div style="width: 80%; text-align: center;">
     <img style="width: 80%;" src="https://miro.medium.com/max/1208/1*KRE0GNHRDwB1yj27uH6vKg.png" />
-    <h6>isConstantSize 적용시(36.68ms)</h6>
-  </div>
-  <div>
-    <p>실습!!! big.js이용</p>
-  </div>
-  <div>
-    <p>미리 canvas를 통해 font size 계산하는 파일 가져와서 그것으로 교체</p>
+    <h6>isConstantSize 적용시: 36.68ms (-86.33%)</h6>
   </div>
 </body>
 </html>
