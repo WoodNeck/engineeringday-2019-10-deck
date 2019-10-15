@@ -75,10 +75,7 @@
     <p>성능개선</p>
     <notes>발표주제가 성능강화에 관해서이므로 </notes>
   </div>
-  <div style="width: 60%;">
-    <p style="width: 100%; display: flex; justify-content: center;">
-      <img src="https://media1.tenor.com/images/54cca05227b04d73186ecdfb6490e64c/tenor.gif?itemid=11154687" />
-    </p>
+  <div style="width: 100%;">
     <center><h6>직접 <a href="https://naver.github.io/egjs-flicking/features/infiniteflicking.html" target="_blank" style="text-decoration: none">확인</a>해봅시다</h6></center>
     <notes></notes>
     <notes>데모 세션 진행/Infinite가 뭔지 설명</notes>
@@ -105,6 +102,11 @@
   <div style="width: 60%">
     <img src="assets/begin2.png" />
     <notes>제 경우 이미 성능 문제가 심각할거라는 것을 알고 있었어요</notes>
+  </div>
+  <div style="width: 60%">
+    <img style="width: 100%;" src="assets/dom_increase.gif" />
+    <notes>플리킹은 여기 보이는것처럼, 기존에 무조건 패널의 개수만큼 엘리먼트를 증가시키는 방식을 사용했었습니다.</notes>
+    <notes>그래서, 성능에 문제가 있을 것임이 확실하게 보이는 상황이었죠.</notes>
   </div>
   <div>
     <p>DOM 증가? 성능 하락?</p>
@@ -164,11 +166,6 @@
     <p>- 렌더링</p>
     <p>- 크기 재계산</p>
     <notes>그 중에서도 특히나 느린 것이, 렌더링과 엘리먼트 크기 재계산과 관련된 조작인데</notes>
-  </div>
-  <div style="width: 60%">
-    <img style="width: 100%;" src="assets/dom_increase.gif" />
-    <notes>플리킹은 여기 보이는것처럼, 기존에 무조건 패널의 개수만큼 엘리먼트를 증가시키는 방식을 사용했었습니다.</notes>
-    <notes>그래서, 성능에 문제가 있을 것임이 확실하게 보이는 상황이었죠.</notes>
   </div>
   <div>
     <p>주로 느린 것들:</p>
@@ -453,6 +450,13 @@
   </div>
   <div>
     <h4>하나만 계산하고<br/>나머지는 계산된 값을 사용</h4>
+  </div>
+  <div>
+    <h6>true<br/>- 모든 패널이 같다</h6>
+    <h6>class 이름의 배열<br/>- 같은 클래스를 갖고있으면 같다</h6>
+  </div>
+  <div>
+    <p>또..</p>
   </div>
   <div>
     <h4>창 크기가 변해도<br/>패널의 크기는<br/>변하지 않습니다</h4>
