@@ -59,7 +59,7 @@
     <notes>Flicking을 사용하시면 보이는 것처럼 다양한 UI형태를 쉽게 제작하실 수 있습니다.</notes>
   </div>
   <div>
-    <p>오픈소스입니다!</p>
+    <h6>오픈소스입니다!</h6>
     <notes>Flicking은 오픈소스 라이브러리이고</notes>
   </div>
   <div>
@@ -162,16 +162,18 @@
     <p>속도 ↓</p>
   </div>
   <div>
-    <p>주로 느린 것들:</p>
-    <p>- 렌더링</p>
-    <p>- 크기 재계산</p>
-    <notes>그 중에서도 특히나 느린 것이, 렌더링과 엘리먼트 크기 재계산과 관련된 조작인데</notes>
+    <h6>이 발표는 그중에서도</h6>
   </div>
   <div>
-    <p>주로 느린 것들:</p>
-    <p style="color: rgb(211, 71, 16)">- 렌더링</p>
-    <p>- 크기 재계산</p>
-    <notes>먼저, Flicking에서 처음으로 시도했던 렌더링 비용을 낮추는 방법에 대해 알아봅시다</notes>
+    <h6>렌더링 비용 감소</h6>
+    <notes>그 중에서도 특히나 느린 것이, 렌더링과 엘리먼트 크기 재계산과 관련된 조작인데</notes>
+  </div>
+  <div style="width: 100%; text-align: center;">
+    <img style="width: 100%; margin: 1.2em 0 1.2em 0" src="assets/cost.png" />
+    <h4>이었기 때문에..</h4>
+  </div>
+  <div>
+    <h6>일단 DOM 개수를 줄이자</h6>
   </div>
   <div>
     <h4>두 가지 옵션</h4>
@@ -183,6 +185,20 @@
     </ul>
   </div>
   <div>
+    <p>엘리먼트 삭제</p>
+    <ul>
+      <li>구현 어려움</li>
+      <li>효과 확실함</li>
+    </ul>
+  </div>
+  <div>
+    <p>display: none</p>
+    <ul>
+      <li>구현 쉬움</li>
+      <li>효과 ?</li>
+    </ul>
+  </div>
+  <div>
     <h6>구현한 뒤 테스트하긴 좀..</h6>
   </div>
   <div>
@@ -190,6 +206,12 @@
   </div>
   <div>
     <p>setTimeout</p>
+  </div>
+  <div style="width: 60%">
+    <img style="width: 100%;" src="https://css-tricks.com/wp-content/uploads/2018/02/chrome-devtools.jpg" />
+  </div>
+  <div>
+    <h6>엘리먼트 3000개 추가</h6>
   </div>
   <div style="width: 100%; display: flex; align-items: center; flex-direction: column;">
     <img style="width: 70%;" src="assets/r1-1.png" />
@@ -207,11 +229,11 @@
     <img src="assets/perf.png" />
   </div>
   <div style="width: 100%; display: flex; align-items: center; flex-direction: column;">
-    <img src="assets/perf2.png" />
+    <img style="margin: 1.2em 0 1.2em 0" src="assets/perf2.png" />
     <p><center>최대 5개</center></p>
   </div>
-  <div>
-    <img src="assets/r2.png" />
+  <div style="width: 100%; display: flex; align-items: center; flex-direction: column;">
+    <img style="margin: 1.2em 0 1.2em 0" src="assets/r2.png" />
   </div>
   <div>
     <h4>엘리먼트 삭제!</h4>
@@ -308,6 +330,15 @@
     <img src="assets/layout.png" />
   </div>
   <div>
+    <h4>주요 렌더링 병목</h4>
+    <ul>
+      <li>Recalculate Style</li>
+      <li>Layout</li>
+      <li>Paint</li>
+      <li>Composite</li>
+    </ul>
+  </div>
+  <div>
     <a href="https://docs.google.com/spreadsheets/d/1Hvi0nu2wG3oQ51XRHtMv-A_ZlidnwUYwgQsPQUg1R2s/pub?single=true&gid=0&output=html" target="_blank">
       <h6>레이아웃 발생 CSS 속성들</h6>
     </a>
@@ -340,11 +371,12 @@
   <div>
     2
   </div>
-  <div>
+  <div style="text-align: center;">
     <h6>스타일 읽기/쓰기 배칭(batching)</h6>
   </div>
-  <div style="width: 100%;">
-    <img style="width: 100%;" src="https://miro.medium.com/max/4968/1*_z5Xy-N1Sc1pTiypvVvqyw.png" />
+  <div style="width: 100%; text-align: center;">
+    <img style="width: 100%; margin-top: 1.2em" src="https://miro.medium.com/max/4968/1*_z5Xy-N1Sc1pTiypvVvqyw.png" />
+    <h6>전체 크기 재계산<br/>창 크기 변경, 모바일 가로/세로 전환 등..</h6>
     <notes>제가 배칭이 필요한 가장 대표적인 경우라고 생각하는 사진입니다.</notes>
   </div>
   <div>
@@ -391,6 +423,9 @@
     <h6>5894.69ms => 154.52ms (-97.38%)</h6>
   </div>
   <div>
+    <h6>의외로 가까이에..</h6>
+  </div>
+  <div>
     3
   </div>
   <div>
@@ -402,6 +437,16 @@
   <div style="width: 80%; text-align: center;">
     <img style="width: 100%; margin: 1.2em 0 1.2em 0" src="https://miro.medium.com/max/1040/1*auuCLR-cYfoFDZUroTTsiA.gif" />
     <h6>레이어↑ => 메모리↑</h6>
+  </div>
+  <div style="width: 80%; text-align: center;">
+    <img style="width: 100%;" src="assets/p1.png" />
+    <h6>기존 사례</h6>
+  </div>
+  <div style="width: 80%;">
+    <img style="width: 100%;" src="assets/p2.png" />
+  </div>
+  <div>
+    <h6>Flicking은?</h6>
   </div>
   <div>
     <h5>성능을 올리진 못했습니다</h5>
@@ -486,6 +531,12 @@
   <div style="width: 80%; text-align: center;">
     <img style="width: 80%;" src="https://miro.medium.com/max/1208/1*KRE0GNHRDwB1yj27uH6vKg.png" />
     <h6>isConstantSize 적용시: 36.68ms (-86.33%)</h6>
+  </div>
+  <div>
+    <h4>감사합니다</h4>
+  </div>
+  <div>
+    <h4>Q & A</h4>
   </div>
 </body>
 </html>
