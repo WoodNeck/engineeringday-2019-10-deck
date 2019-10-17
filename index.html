@@ -153,7 +153,7 @@
       <li>HTML parsing</li>
       <li>기존 child 제거</li>
       <li>child 엘리먼트 생성</li>
-      <li>엘리먼트 크기 재계산</li>
+      <li>엘리먼트 배치</li>
       <li>...</li>
     </ul>
   </div>
@@ -326,15 +326,19 @@
     <img style="width: 100%;" src="assets/c4.png" />
   </div>
   <div style="text-align: center;">
-    <h4>style의 left/top 업데이트<br/>=> Layout 발생</h4>
+    <h4>style의 left/top 업데이트<br/>=> Layout, Paint, Composite 발생</h4>
     <img src="assets/layout.png" />
+  </div>
+  <div style="width: 100%; text-align: center;">
+    <h6>렌더링 파이프라인</h6>
+    <img style="width: 100%;" src="https://developers.google.com/web/fundamentals/performance/rendering/images/intro/frame-full.jpg" />
   </div>
   <div>
     <ul>
       <li>Recalculate Style</li>
       <li>Layout</li>
       <li>Paint</li>
-      <li>Composite</li>
+      <li>Composite Layer</li>
     </ul>
   </div>
   <div>
@@ -344,6 +348,9 @@
     <a href="https://gist.github.com/paulirish/5d52fb081b3570c81e3a" target="_blank">
       <h6>What forces layout / reflow</h6>
     </a>
+  </div>
+  <div>
+    <h5>항상 스타일 업데이트</h5>
   </div>
   <div>
     <p>해결하기 위해<br/>이런 것들을 적용했습니다</p>
