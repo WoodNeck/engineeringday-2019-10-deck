@@ -257,15 +257,6 @@
     <notes>1.6배 상승했습니다. 하지만 제가 발표 제목으로 건 20배 성능 향상에 비해서는 아직 택없이 모자라죠</notes>
   </div>
   <div>
-    <h4>좀 더 세부적으로..<br/>벤치마크를 확인!</h4>
-  </div>
-  <div>
-    <a href="https://jsperf.com/element-remove-vs-display-none/1" target="_blank"><h6>https://jsperf.com/element-remove-vs-display-none/1</h6></a>
-  </div>
-  <div>
-    <a href="https://jsperf.com/element-remove-vs-display-none-2" target="_blank"><h6>https://jsperf.com/element-remove-vs-display-none-2</h6></a>
-  </div>
-  <div>
     <h4>분석 & 개선</h4>
     <notes>일단 기본적으로 방식은 분석 이후 이를 개선하는 것입니다.</notes>
   </div>
@@ -353,20 +344,25 @@
     <h5>항상 스타일 업데이트</h5>
   </div>
   <div>
-    <p>해결하기 위해<br/>이런 것들을 적용했습니다</p>
-    <ul>
-      <li>값 동일시 CSS 업데이트 X</li>
-      <li>엘리먼트 안보일시 업데이트 X</li>
-    </ul>
+    <h6>해결하기 위해<br/>이런 것들을 적용했습니다</h6>
+  </div>
+  <div>
+    <h6>1. 값 동일하면 CSS 업데이트X</h6>
+  </div>
+  <div style="width: 50%;">
+    <img style="width: 100%;" src="assets/d1.png" />
   </div>
   <div style="width: 100%;">
-    <img style="width: 100%;" src="assets/panels.png" />
+    <img style="width: 100%;" src="assets/d2.png" />
   </div>
-  <div style="width: 100%;">
-    <img style="width: 100%;" src="assets/panels2.png" />
+  <div>
+    <h6>느립니다!</h6>
   </div>
   <div style="width: 100%;">
     <img style="width: 100%;" src="assets/c8.png" />
+  </div>
+  <div>
+    <h6>2. 삭제된 엘리먼트 업데이트X</h6>
   </div>
   <div>
     <h6>삭제된 엘리먼트의<br/>레퍼런스를 갖고 있습니다</h6>
@@ -383,6 +379,18 @@
   <div style="width: 100%;">
     <img style="width: 100%;" src="assets/c9.png" />
   </div>
+  <div>
+    <h6>얼마나 느린데?</h6>
+  </div>
+  <div>
+    <h4>벤치마크</h4>
+  </div>
+  <div>
+    <a href="https://jsperf.com/same-left-vs-not-in-document-left" target="_blank">https://jsperf.com/same-left-vs-not-in-document-left</a>
+  </div>
+  <div>
+    <p>결과</p>
+  </div>
   <div style="width: 80%; text-align: center;">
     <img style="width: 100%; margin: 1.2em 0 1.2em 0" src="https://miro.medium.com/max/5292/1*1JsaLOrnPVKSF0-mMWQGcQ.png" />
     <h4>18.54ms => 1.8ms (-90.29%)</h4>
@@ -394,9 +402,6 @@
     <img style="width: 40%; margin: 1.2em 0 1.2em 0" src="https://miro.medium.com/max/856/1*9wpuNbmmT-QiE8dcphGW_g.png" />
     <img style="width: 40%; margin: 1.2em 0 1.2em 0" src="https://miro.medium.com/max/888/1*YR7YYjVOdi8zwrCuebi0Sw.png" />
     <h6>평균 수행시간 비교<br/>16.69ms => 1.76ms (-89.45%)</h6>
-  </div>
-  <div>
-    <a href="https://jsperf.com/same-left-vs-not-in-document-left" target="_blank">https://jsperf.com/same-left-vs-not-in-document-left</a>
   </div>
   <div>
     2
@@ -567,6 +572,12 @@
   </div>
   <div>
     <h4>Q & A</h4>
+  </div>
+  <div>
+    <a href="https://jsperf.com/element-remove-vs-display-none/1" target="_blank"><h6>https://jsperf.com/element-remove-vs-display-none/1</h6></a>
+  </div>
+  <div>
+    <a href="https://jsperf.com/element-remove-vs-display-none-2" target="_blank"><h6>https://jsperf.com/element-remove-vs-display-none-2</h6></a>
   </div>
 </body>
 </html>
